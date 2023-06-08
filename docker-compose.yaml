@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  # backend_alfastore:
+  #   depends_on:
+  #     - db
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: backend_alfastore
+  #   container_name: backend_alfastore
+  #   restart: always # reiniciar el contenedor si se detiene
+  #   ports:
+  #     - "${PORT}:${PORT}"
+  #   # working_dir: /var/www/pokedex
+  #   environment:
+  #     DATABASE_MONGO_URI: ${DATABASE_MONGO_URI}
+  #     PORT: ${PORT}
+  #   # volumes:
+  #   #   - ./:/var/www/pokedex
+
+  db:
+    image: mongo:5
+    container_name: db_alfastore
+    restart: always
+    ports:
+      - 27019:27017
+    environment:
+      MONGODB_DATABASE: db_alfastore
+    volumes:
+      - ./mongo:/data/db
